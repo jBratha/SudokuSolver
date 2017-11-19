@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import jBratha.Sudoku.Sudoku;
+import jBratha.sudoku.Sudoku;
 
 import java.net.URL;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package jBratha.Sudoku;
+package jBratha.sudoku;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,4 +1,7 @@
-package jBratha.Sudoku;
+package jBratha.solvers;
+
+import jBratha.sudoku.Cell;
+import jBratha.sudoku.Sudoku;
 
 import java.util.Arrays;
 

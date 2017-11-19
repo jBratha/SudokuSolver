@@ -16,7 +16,7 @@ public class Main extends Application {
         Controller controller = loader.getController();
         stage.setScene(new Scene(root));
 //        controller.setUpKeyListeners();
-        stage.setTitle("Sudoku Solver");
+        stage.setTitle("sudoku Solver");
         stage.show();
     }
 
