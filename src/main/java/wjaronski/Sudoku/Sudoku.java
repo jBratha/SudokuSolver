@@ -1,6 +1,8 @@
 package wjaronski.Sudoku;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 public class Sudoku {
 
@@ -48,11 +50,11 @@ public class Sudoku {
                 cells.stream().filter(e -> e.get() > 0 && e.get() < 10).allMatch(new HashSet<>()::add);
     }
 
-    private int[][] parseStringToInts(String board){
+    private int[][] parseStringToInts(String board) {
         int[][] ints = new int[9][9];
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                ints[i][j] = Integer.parseInt(board.charAt(i*9+j)+"");
+                ints[i][j] = Integer.parseInt(board.charAt(i * 9 + j) + "");
             }
         }
         return ints;
@@ -66,5 +68,37 @@ public class Sudoku {
             }
         }
         return cels;
+    }
+
+    public List<Cell> getBox(Cell[][] board, int x, int y) {
+        List<Cell> box = new ArrayList<>(9);
+        for (int i = 0; i < 9; i++)
+            box.add(board[x / 3 * 3 + i / 3][y / 3 * 3 + i % 3]);
+        return box;
+    }
+
+    public List<Cell> getRow(Cell[][] board, int x) {
+        List<Cell> row = new ArrayList<>(9);
+        for (int i = 0; i < 9; i++)
+            row.add(board[x][i]);
+        return row;
+    }
+
+    public List<Cell> getCol(Cell[][] board, int y) {
+        List<Cell> col = new ArrayList<>(9);
+        for (int i = 0; i < 9; i++)
+            col.add(board[i][y]);
+        return col;
+    }
+
+
+    public void posibilities(Cell[][] board, int x, int y) {
+        List<Cell> row = getRow(board, x);
+        List<Cell> col = getCol(board, y);
+        List<Cell> box = getBox(board, x, y);
+
+        row.stream().filter(e -> e.get() > 0).forEach(e -> board[x][y].deletePosiibility(e.get()));
+        col.stream().filter(e -> e.get() > 0).forEach(e -> board[x][y].deletePosiibility(e.get()));
+        box.stream().filter(e -> e.get() > 0).forEach(e -> board[x][y].deletePosiibility(e.get()));
     }
 }

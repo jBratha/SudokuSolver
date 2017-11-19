@@ -51,8 +51,9 @@ public class Cell {
     }
 
     public void deletePosiibility(int val){
-        for (int i = 0; i < posib.length; i++) {
-            if(posib[i]==val) posib[i]=0;
-        }
+        posib[val] = 0;
+//        for (int i = 0; i < posib.length; i++) {
+//            if(posib[i]==val) posib[i]=0;
+//        }
     }
 }
