@@ -1,4 +1,4 @@
-package wjaronski.Sudoku;
+package jBratha.Sudoku;
 
 import org.junit.Test;
 

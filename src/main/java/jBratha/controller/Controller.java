@@ -1,4 +1,4 @@
-package wjaronski.controller;
+package jBratha.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import wjaronski.Sudoku.Sudoku;
+import jBratha.Sudoku.Sudoku;
 
 import java.net.URL;
 import java.util.ArrayList;

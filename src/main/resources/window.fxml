@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="431.0" prefWidth="448.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wjaronski.controller.Controller">
+<BorderPane prefHeight="431.0" prefWidth="448.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jBratha.controller.Controller">
    <center>
       <GridPane fx:id="gridPane" alignment="CENTER" gridLinesVisible="true" prefHeight="304.0" prefWidth="428.0" BorderPane.alignment="CENTER">
         <columnConstraints>

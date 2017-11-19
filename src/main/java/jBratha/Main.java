@@ -1,4 +1,4 @@
-package wjaronski;
+package jBratha;
 
 
 import javafx.application.Application;
@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import wjaronski.controller.Controller;
+import jBratha.controller.Controller;
 
 public class Main extends Application {
     @Override

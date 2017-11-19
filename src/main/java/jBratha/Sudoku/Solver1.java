@@ -1,4 +1,4 @@
-package wjaronski.Sudoku;
+package jBratha.Sudoku;
 
 import java.util.Arrays;
 
@@ -26,8 +26,9 @@ public class Solver1 {
                         //delete posibilites
                         if (newBoard[i][j].get() == 0){
                             sudoku.posibilities(newBoard,i,j);
-//                            newBoard[i][j].setPosib(sudoku.posibilities(newBoard, i, j));
-
+                            if(newBoard[i][j].getPosib().length==1){
+                                newBoard[i][j].setCertainNumber(newBoard[i][j].getPosib()[0]);
+                            }
                         }
                     }
                 }
