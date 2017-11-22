@@ -5,7 +5,7 @@ import jBratha.sudoku.Sudoku;
 
 import java.util.Arrays;
 
-public class Solver1 {
+public class Solver1 implements Solver{
     //    jesli gdzies miejsce ma tylko 1 mozliwosc to nadaj wartosc
     private Cell[][] board;
     private boolean boardChanged;
@@ -16,7 +16,7 @@ public class Solver1 {
         sudoku = new Sudoku();
     }
 
-    public Cell[][] solve() {
+    public void solve() {
         if (sudoku.isBoardValid(board)) {
             Cell[][] newBoard = board;
             boardChanged = true;
@@ -38,9 +38,19 @@ public class Solver1 {
 
                 if (Arrays.deepEquals(newBoard, board)) boardChanged = false;
             }
-            return newBoard;
+//            return newBoard;
         }
-        return board; // nie da sie
+//        return board; // nie da sie
+    }
+
+    @Override
+    public void setBoard(Cell[][] board) {
+        this.board = board;
+    }
+
+    @Override
+    public Cell[][] getBoard() {
+        return board;
     }
 
     private boolean canValBeInxyBoard(int val, int x, int y, Cell[][] board) {

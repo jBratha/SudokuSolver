@@ -70,6 +70,26 @@ public class Sudoku {
         return cels;
     }
 
+    public int[][] parseCellArr(Cell[][] cells) {
+        int[][] ints = new int[9][9];
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells.length; j++) {
+                ints[i][j] = cells[i][j].get();
+            }
+        }
+        return ints;
+    }
+
+    public void posibilities(Cell[][] board, int x, int y) {
+        List<Cell> row = getRow(board, x);
+        List<Cell> col = getCol(board, y);
+        List<Cell> box = getBox(board, x, y);
+
+        row.stream().filter(e -> e.get() > 0).forEach(e -> board[x][y].deletePosibility(e.get()));
+        col.stream().filter(e -> e.get() > 0).forEach(e -> board[x][y].deletePosibility(e.get()));
+        box.stream().filter(e -> e.get() > 0).forEach(e -> board[x][y].deletePosibility(e.get()));
+    }
+
     public List<Cell> getBox(Cell[][] board, int x, int y) {
         List<Cell> box = new ArrayList<>(9);
         for (int i = 0; i < 9; i++)
@@ -91,14 +111,8 @@ public class Sudoku {
         return col;
     }
 
-
-    public void posibilities(Cell[][] board, int x, int y) {
-        List<Cell> row = getRow(board, x);
-        List<Cell> col = getCol(board, y);
-        List<Cell> box = getBox(board, x, y);
-
-        row.stream().filter(e -> e.get() > 0).forEach(e -> board[x][y].deletePosiibility(e.get()));
-        col.stream().filter(e -> e.get() > 0).forEach(e -> board[x][y].deletePosiibility(e.get()));
-        box.stream().filter(e -> e.get() > 0).forEach(e -> board[x][y].deletePosiibility(e.get()));
+    public boolean canValBePlacedInBoardxy(int val, Cell[][] tempBoard, int i, int j) {
+        tempBoard[i][j].setVal(val);
+        return isBoardValid(tempBoard);
     }
 }
