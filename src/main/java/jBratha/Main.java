@@ -1,12 +1,12 @@
 package jBratha;
 
 
+import jBratha.controller.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jBratha.controller.Controller;
 
 public class Main extends Application {
     @Override
@@ -15,7 +15,6 @@ public class Main extends Application {
         Parent root = loader.load();
         Controller controller = loader.getController();
         stage.setScene(new Scene(root));
-//        controller.setUpKeyListeners();
         stage.setTitle("sudoku Solver");
         stage.show();
     }
