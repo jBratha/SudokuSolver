@@ -9,7 +9,7 @@ public class Cell {
     private int certainNumber;
 
     public Cell(int certainNumber) {
-        posib = new int[]{1,2,3,4,5,6,7,8,9};
+        posib = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         this.certainNumber = certainNumber;
     }
 
@@ -18,7 +18,7 @@ public class Cell {
     }
 
     public int[] getPosib() {
-        return Arrays.stream(posib).filter(e->e!=0).toArray();
+        return Arrays.stream(posib).filter(e -> e != 0).toArray();
     }
 
     public void setPosib(int[] posib) {
@@ -34,12 +34,12 @@ public class Cell {
         this.certainNumber = certainNumber;
     }
 
-    public void setVal(int val){
+    public void setVal(int val) {
         this.certainNumber = val;
     }
 
-    public boolean isCertainInPosibs(int certain){
-        return posib[certain-1]==certain;
+    public boolean isCertainInPosibs(int certain) {
+        return posib[certain - 1] == certain;
     }
 
     @Override
@@ -59,17 +59,17 @@ public class Cell {
 
     public void addPosibility(int val) {
         if (Arrays.stream(posib).anyMatch(e -> e == val)) return;
-        posib[val-1] = val;
+        posib[val - 1] = val;
     }
 
-    public void deletePosibility(int val){
-        posib[val-1] = 0;
+    public void deletePosibility(int val) {
+        posib[val - 1] = 0;
 //        for (int i = 0; i < posib.length; i++) {
 //            if(posib[i]==val) posib[i]=0;
 //        }
     }
 
     public void clearPosibilities() {
-        IntStream.range(1,9).forEach(this::deletePosibility);
+        IntStream.range(1, 9).forEach(this::deletePosibility);
     }
 }

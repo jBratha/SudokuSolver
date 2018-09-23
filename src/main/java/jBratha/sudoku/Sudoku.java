@@ -46,7 +46,7 @@ public class Sudoku {
     }
 
     private boolean isValidLine(ArrayList<Cell> cells) {
-        return cells.stream().allMatch(e -> e.get() >= 0 && e.get() < 10) &&
+        return cells.stream().allMatch(e -> e.get() > 0 && e.get() < 10) &&
                 cells.stream().filter(e -> e.get() > 0 && e.get() < 10).allMatch(new HashSet<>()::add);
     }
 

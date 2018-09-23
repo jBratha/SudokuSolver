@@ -1,6 +1,7 @@
 package jBratha.controller;
 
 import jBratha.solvers.BruteForce;
+import jBratha.sudoku.Sudoku;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import jBratha.sudoku.Sudoku;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -47,7 +47,8 @@ public class Controller implements Initializable {
             statusLabel.setTextFill(Color.GREEN);
             statusLabel.setText("Udalo sie rozwiazac !");
             printSudokuBoard(sudoku.parseCellArr(bf.getBoard()));
-        } else {
+        }
+        else {
             statusLabel.setTextFill(Color.RED);
             statusLabel.setText("Nie udalo sie rozwiazac !");
         }
@@ -86,7 +87,7 @@ public class Controller implements Initializable {
         sudoku = new Sudoku();
         textFields = new ArrayList<>(9);
         initGridPane();
-}
+    }
 
     private void keyEvent(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
