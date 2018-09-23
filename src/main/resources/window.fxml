@@ -31,7 +31,7 @@
       <VBox alignment="BOTTOM_CENTER" prefHeight="0.0" prefWidth="428.0" BorderPane.alignment="BOTTOM_CENTER">
          <children>
             <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="337.0" text="Status" />
-            <Button fx:id="checkButton" mnemonicParsing="false" onAction="#testTable" text="Check" />
+            <Button fx:id="solveButton" mnemonicParsing="false" onAction="#solveSudoku" text="Solve" />
             <Label fx:id="cordsLabel" text="Label" />
          </children>
       </VBox>

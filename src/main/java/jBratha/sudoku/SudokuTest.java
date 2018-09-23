@@ -1,4 +1,4 @@
-package jBratha.Sudoku;
+package jBratha.sudoku;
 
 import org.junit.Test;
 

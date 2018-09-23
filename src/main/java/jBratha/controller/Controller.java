@@ -1,5 +1,7 @@
 package jBratha.controller;
 
+import jBratha.solvers.BruteForce;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -9,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import jBratha.Sudoku.Sudoku;
+import jBratha.sudoku.Sudoku;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -32,11 +34,32 @@ public class Controller implements Initializable {
     private Label cordsLabel;
 
     @FXML
-    private Button checkButton;
+    private Button solveButton;
 
-    @FXML
     private void testTable() {
         updateStatusLabel(sudoku.isBoardValid(getInts()));
+    }
+
+    @FXML
+    private void solveSudoku() {
+        BruteForce bf = new BruteForce(getInts());
+        if (bf.solve(0, 0)) {
+            statusLabel.setTextFill(Color.GREEN);
+            statusLabel.setText("Udalo sie rozwiazac !");
+            printSudokuBoard(sudoku.parseCellArr(bf.getBoard()));
+        } else {
+            statusLabel.setTextFill(Color.RED);
+            statusLabel.setText("Nie udalo sie rozwiazac !");
+        }
+    }
+
+    private void printSudokuBoard(int[][] ints) {
+        Platform.runLater(() -> {
+            IntStream.range(0, 9)
+                    .forEach(e -> IntStream.range(0, 9)
+                            .forEach(f -> textFields.get(e).get(f).setText(ints[e][f] + "")));
+
+        });
     }
 
     private void updateStatusLabel(boolean boardValid) {
@@ -63,7 +86,7 @@ public class Controller implements Initializable {
         sudoku = new Sudoku();
         textFields = new ArrayList<>(9);
         initGridPane();
-    }
+}
 
     private void keyEvent(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
@@ -80,10 +103,22 @@ public class Controller implements Initializable {
                 y = (y == 0) ? y : y - 1;
                 break;
             case ENTER:
-                testTable();
+                solveSudoku();
+                break;
+            case ESCAPE:
+                clearTable();
                 break;
         }
         textFields.get(x).get(y).requestFocus();
+    }
+
+    private void clearTable() {
+        Platform.runLater(() -> {
+            IntStream.range(0, 9)
+                    .forEach(e -> IntStream.range(0, 9)
+                            .forEach(f -> textFields.get(e).get(f).setText("")));
+
+        });
     }
 
     private void initGridPane() {
@@ -112,18 +147,6 @@ public class Controller implements Initializable {
         addTextLimiter(tf);
         return tf;
     }
-
-//    private void printCords(TextField tf) {
-//        for (int i = 0; i < textFields.size(); i++) {
-//            for (int j = 0; j < textFields.get(i).size(); j++) {
-//                if (tf.equals(textFields.get(i).get(j))) {
-//                    x = i;
-//                    y = j;
-//                }
-//            }
-//        }
-//        statusLabel.setText("x:" + x + ", y:" + y);
-//    }
 
     private GridPane newGridPane() {
         GridPane gridPane = new GridPane();
